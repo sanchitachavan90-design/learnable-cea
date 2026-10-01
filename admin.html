@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard | LearnAble</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="admin-page">
+    <div class="admin-container">
+      <aside class="admin-sidebar">
+        <div class="admin-header">
+          <a class="brand" href="index.html">
+            <span class="brand-mark">L</span>
+            <span><strong>LearnAble</strong><small>Admin</small></span>
+          </a>
+        </div>
+        <nav class="admin-nav">
+          <a href="#dashboard" class="nav-item active">Dashboard</a>
+          <a href="#resources-mgmt" class="nav-item">Manage Resources</a>
+          <a href="#feedback-view" class="nav-item">View Feedback</a>
+          <a href="#activities-view" class="nav-item">View Activities</a>
+          <a href="javascript:handleAdminLogout()" class="nav-item logout">Logout</a>
+        </nav>
+      </aside>
+
+      <main class="admin-main">
+        <div class="admin-header-bar">
+          <h1>Admin Dashboard</h1>
+          <p>Manage resources, view feedback, and monitor activity.</p>
+        </div>
+
+        <section id="dashboard" class="admin-section active">
+          <h2>Dashboard Overview</h2>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <h3 id="totalResources">0</h3>
+              <p>Total Resources</p>
+            </div>
+            <div class="stat-card">
+              <h3 id="totalFeedback">0</h3>
+              <p>Total Feedback Entries</p>
+            </div>
+            <div class="stat-card">
+              <h3 id="totalActivities">0</h3>
+              <p>Activities Completed</p>
+            </div>
+            <div class="stat-card">
+              <h3>Prototype</h3>
+              <p>Using localStorage</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="resources-mgmt" class="admin-section">
+          <h2>Manage Resources</h2>
+          <div class="resource-management">
+            <div class="form-card">
+              <h3>Add New Resource</h3>
+              <form id="addResourceForm" onsubmit="handleAddResource(event)">
+                <div class="form-group">
+                  <label for="resourceName">Resource Name *</label>
+                  <input type="text" id="resourceName" required />
+                </div>
+                <div class="form-group">
+                  <label for="resourceCategory">Category *</label>
+                  <select id="resourceCategory" required>
+                    <option value="">-- Select --</option>
+                    <option value="Assessment">Assessment</option>
+                    <option value="Learning Support">Learning Support</option>
+                    <option value="Parent Support">Parent Support</option>
+                    <option value="Teacher Support">Teacher Support</option>
+                    <option value="Inclusive Education">Inclusive Education</option>
+                    <option value="Awareness">Awareness</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="resourceDesc">Description *</label>
+                  <textarea id="resourceDesc" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="resourceWebsite">Website/URL *</label>
+                  <input type="url" id="resourceWebsite" required />
+                </div>
+                <div class="form-group">
+                  <label for="resourceSource">Source *</label>
+                  <input type="text" id="resourceSource" required />
+                </div>
+                <button type="submit" class="btn btn-primary">Add Resource</button>
+              </form>
+            </div>
+
+            <div class="resource-list-card">
+              <h3>Resources</h3>
+              <div class="filter-box">
+                <input type="text" id="adminResourceSearch" placeholder="Search resources..." />
+                <select id="adminCategoryFilter">
+                  <option value="">All Categories</option>
+                  <option value="Assessment">Assessment</option>
+                  <option value="Learning Support">Learning Support</option>
+                  <option value="Parent Support">Parent Support</option>
+                  <option value="Teacher Support">Teacher Support</option>
+                  <option value="Inclusive Education">Inclusive Education</option>
+                  <option value="Awareness">Awareness</option>
+                </select>
+              </div>
+              <div id="adminResourcesList" class="resources-grid">
+                <!-- Resources populated by JavaScript -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="feedback-view" class="admin-section">
+          <h2>User Feedback</h2>
+          <div id="feedbackList" class="feedback-list">
+            <!-- Feedback populated by JavaScript -->
+          </div>
+          <div id="noFeedback" class="no-results">
+            <p>No feedback received yet.</p>
+          </div>
+        </section>
+
+        <section id="activities-view" class="admin-section">
+          <h2>Activities</h2>
+          <p>Activity statistics and completion data can be tracked here.</p>
+        </section>
+      </main>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/admin.js"></script>
+  </body>
+</html>
